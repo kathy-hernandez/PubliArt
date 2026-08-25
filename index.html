@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PubliArt | Diseño, Publicidad & Arte Urbano</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Rubik:wght@700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0A0712',
+                            card: '#140F24',
+                            purple: '#A855F7',
+                            magenta: '#C010B0',
+                            blue: '#00A8E8',
+                            yellow: '#FFB703',
+                            orange: '#FF8800'
+                        }
+                    },
+                    fontFamily: {
+                        graffiti: ['"Permanent Marker"', 'cursive'],
+                        display: ['"Rubik"', 'sans-serif'],
+                        body: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Drip and Urban Pattern Effects */
+        .bg-urban-pattern {
+            background-color: #0A0712;
+            background-image: radial-gradient(#C010B0 0.75px, transparent 0.75px), radial-gradient(#00A8E8 0.75px, #0A0712 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            background-opacity: 0.15;
+        }
+        
+        .glow-magenta {
+            box-shadow: 0 0 25px -5px rgba(192, 16, 176, 0.5);
+        }
+
+        .glow-blue {
+            box-shadow: 0 0 25px -5px rgba(0, 168, 232, 0.5);
+        }
+
+        .glow-yellow {
+            box-shadow: 0 0 25px -5px rgba(255, 183, 3, 0.5);
+        }
+
+        .text-gradient-publiart {
+            background: linear-gradient(135deg, #00A8E8 0%, #00C9FF 45%, #FFB703 55%, #FF8800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* SVG Paint Splash Effect */
+        .drip-bottom {
+            position: relative;
+        }
+        .drip-bottom::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C150,90 350,-40 500,65 C650,170 900,-20 1200,40 L1200,0 L0,0 Z' fill='%20C010B0'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-body selection:bg-brand-magenta selection:text-white antialiased bg-urban-pattern min-h-screen flex flex-col">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-brand-dark/90 border-b border-brand-purple/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Brand -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="relative w-12 h-12 flex items-center justify-center bg-brand-card rounded-full border-2 border-brand-magenta group-hover:scale-105 transition-transform">
+                        <!-- Icono / Mascot Mini Preview -->
+                        <svg class="w-8 h-8 text-brand-yellow" viewBox="0 0 100 100" fill="currentColor">
+                            <path d="M55,5 L20,55 L45,55 L35,95 L80,40 L50,40 Z" fill="#FFB703" stroke="#C010B0" stroke-width="4"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-graffiti text-2xl tracking-wider text-gradient-publiart drop-shadow-[0_2px_10px_rgba(192,16,176,0.3)]">
+                            PUBLI<span class="text-brand-yellow">ART</span>
+                        </span>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 -mt-1">Publicidad & Diseño</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                    <a href="#inicio" class="hover:text-brand-blue transition-colors">Inicio</a>
+                    <a href="#servicios" class="hover:text-brand-blue transition-colors">Servicios</a>
+                    <a href="#portafolio" class="hover:text-brand-yellow transition-colors">Portafolio</a>
+                    <a href="#cotizador" class="hover:text-brand-magenta transition-colors">Cotizador Express</a>
+                    <a href="#contacto" class="hover:text-brand-blue transition-colors">Contacto</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="https://wa.me/584120000000?text=Hola%20PubliArt,%20me%20interesa%20cotizar%20un%20proyecto" target="_blank" 
+                       class="px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-magenta via-brand-purple to-brand-blue text-white font-bold text-sm shadow-lg hover:brightness-110 hover:scale-105 transition-all flex items-center gap-2">
+                        <i class="fab font-bold fa-whatsapp text-lg"></i> Cotizar Ahora
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card/95 border-b border-brand-purple/20 px-4 pt-2 pb-6 space-y-4">
+            <a href="#inicio" class="block py-2 text-base font-semibold hover:text-brand-blue">Inicio</a>
+            <a href="#servicios" class="block py-2 text-base font-semibold hover:text-brand-blue">Servicios</a>
+            <a href="#portafolio" class="block py-2 text-base font-semibold hover:text-brand-yellow">Portafolio</a>
+            <a href="#cotizador" class="block py-2 text-base font-semibold hover:text-brand-magenta">Cotizador Express</a>
+            <a href="#contacto" class="block py-2 text-base font-semibold hover:text-brand-blue">Contacto</a>
+            <a href="https://wa.me/584120000000?text=Hola%20PubliArt,%20quisiera%20cotizar" target="_blank" class="w-full py-3 rounded-xl bg-brand-magenta text-center font-bold flex items-center justify-center gap-2">
+                <i class="fab fa-whatsapp"></i> Escribir a WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative py-12 lg:py-24 overflow-hidden">
+        <!-- Glow accents -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-magenta/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-80 h-80 bg-brand-blue/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Main Intro Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-card border border-brand-magenta/40 text-brand-yellow font-semibold text-xs tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-brand-yellow animate-ping"></span>
+                        Estudio Creativo & Impresión
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black leading-tight tracking-tight">
+                        Hacemos que tu marca <br>
+                        <span class="font-graffiti text-gradient-publiart drop-shadow-lg">¡IMPACTE Y DESTELE!</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-lg sm:text-xl max-w-2xl font-medium leading-relaxed">
+                        Transformamos tus ideas en arte gráfico impactante, rotulación comercial, murales y material publicitario con estilo urbano único y alta durabilidad.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#portafolio" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-blue to-cyan-400 text-slate-950 font-black text-base shadow-lg shadow-cyan-500/25 hover:scale-105 transition-all flex items-center justify-center gap-3">
+                            <i class="fas fa-eye"></i> Ver Trabajos
+                        </a>
+                        <a href="#cotizador" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-card border-2 border-brand-magenta text-white font-bold text-base hover:bg-brand-magenta/20 hover:scale-105 transition-all flex items-center justify-center gap-3">
+                            <i class="fas fa-calculator text-brand-magenta"></i> Calcular Presupuesto
+                        </a>
+                    </div>
+
+                    <!-- Counter Badges -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800/80">
+                        <div>
+                            <p class="font-display text-2xl sm:text-3xl font-extrabold text-brand-yellow">+100%</p>
+                            <p class="text-xs text-slate-400 font-medium">Creatividad Original</p>
+                        </div>
+                        <div>
+                            <p class="font-display text-2xl sm:text-3xl font-extrabold text-brand-blue">Garantizada</p>
+                            <p class="text-xs text-slate-400 font-medium">Calidad de Materiales</p>
+                        </div>
+                        <div>
+                            <p class="font-display text-2xl sm:text-3xl font-extrabold text-brand-magenta">Rápida</p>
+                            <p class="text-xs text-slate-400 font-medium">Entrega de Proyectos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mascot & Visual Card -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-md bg-brand-card p-8 rounded-3xl border-2 border-brand-purple/40 glow-magenta text-center overflow-hidden">
+                        
+                        <!-- Dripping Accent SVG top -->
+                        <div class="absolute top-0 left-0 right-0 h-4 bg-brand-magenta"></div>
+
+                        <!-- Mascot Graphic Recreation -->
+                        <div class="relative z-10 my-4 flex justify-center">
+                            <div class="relative w-48 h-48 sm:w-56 sm:h-56 bg-brand-dark/80 rounded-full border-4 border-brand-magenta flex items-center justify-center shadow-2xl">
+                                <!-- Background paint splatter -->
+                                <svg class="absolute inset-0 w-full h-full text-brand-magenta/30 scale-125" viewBox="0 0 100 100" fill="currentColor">
+                                    <path d="M50,10 Q65,20 80,15 Q90,35 85,55 Q95,75 75,85 Q55,95 35,85 Q10,85 15,60 Q5,40 25,25 Z" />
+                                </svg>
+                                
+                                <!-- Lightning Mascot ("Rayo PubliArt") -->
+                                <div class="relative z-10 animate-bounce transition-all duration-1000" style="animation-duration: 3s;">
+                                    <svg class="w-32 h-32 sm:w-40 sm:h-40 drop-shadow-[0_10px_15px_rgba(255,183,3,0.4)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- Lightning Body -->
+                                        <path d="M110 10L30 110H95L60 190L170 80H105L140 10H110Z" fill="url(#lightningGrad)" stroke="#140F24" stroke-width="6" stroke-linejoin="round"/>
+                                        <!-- Eyes -->
+                                        <ellipse cx="90" cy="70" rx="8" ry="12" fill="#FFFFFF"/>
+                                        <ellipse cx="125" cy="70" rx="8" ry="12" fill="#FFFFFF"/>
+                                        <circle cx="92" cy="72" r="4" fill="#000000"/>
+                                        <circle cx="123" cy="72" r="4" fill="#000000"/>
+                                        <!-- Expressive Eyebrows -->
+                                        <path d="M80 55L100 62" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+                                        <path d="M135 55L115 62" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+                                        <!-- Big Smile -->
+                                        <path d="M85 95Q108 120 130 95" stroke="#000000" stroke-width="5" stroke-linecap="round" fill="#800000"/>
+                                        <!-- Teeth -->
+                                        <path d="M92 97H123V103H92Z" fill="#FFFFFF"/>
+                                        <!-- Gradients -->
+                                        <defs>
+                                            <linearGradient id="lightningGrad" x1="30" y1="10" x2="170" y2="190" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#FFB703"/>
+                                                <stop offset="1" stop-color="#FF8800"/>
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="font-graffiti text-2xl text-brand-yellow tracking-wide mt-2">¡DALE PODER A TU MARCA!</h3>
+                        <p class="text-xs text-slate-300 mt-1">Diseño gráfico, publicidad exterior, estampados, calcomanías y soluciones creativas personalizadas.</p>
+                        
+                        <div class="mt-4 pt-4 border-t border-slate-800 flex justify-center gap-4 text-brand-magenta text-xl">
+                            <i class="fas fa-paint-brush"></i>
+                            <i class="fas fa-cut"></i>
+                            <i class="fas fa-bolt text-brand-yellow"></i>
+                            <i class="fas fa-bullhorn text-brand-blue"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section id="servicios" class="py-16 bg-brand-dark/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase font-bold tracking-widest text-brand-blue mb-2">Especialidades</h2>
+                <p class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+                    ¿Qué podemos <span class="font-graffiti text-brand-yellow">crear para ti?</span>
+                </p>
+                <p class="text-slate-400 mt-4 text-base">
+                    Combinamos arte manual y tecnología digital para ofrecerte soluciones publicitarias de máximo nivel.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Servicio 1: Diseño Gráfico & Branding -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-purple/30 hover:border-brand-blue transition-all group hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-xl bg-brand-blue/10 border border-brand-blue flex items-center justify-center text-brand-blue text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <!-- Dripping Brush Icon -->
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-brand-blue transition-colors">Diseño Gráfico & Logos</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Creación de logotipos únicos, identidad corporativa, redes sociales y arte vectorial listo para corte o impresión.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Logos Vectoriales</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Banners & Posts</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Branding Completo</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 2: Rotulación & Publicidad Exterior -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-purple/30 hover:border-brand-magenta transition-all group hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-xl bg-brand-magenta/10 border border-brand-magenta flex items-center justify-center text-brand-magenta text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-brand-magenta transition-colors">Rotulación & Vinilos</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Corte de vinil decorativo y comercial para fachadas, vehículos, vitrinas, avisos e interiorismo.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Vinil Microperforado</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Rotulación Vehicular</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Decora Vitrinas</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 3: Material POP e Impresión -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-purple/30 hover:border-brand-yellow transition-all group hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-xl bg-brand-yellow/10 border border-brand-yellow flex items-center justify-center text-brand-yellow text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-brand-yellow transition-colors">Impresión & POP</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Impresión a gran formato, pendones, calcomanías troqueladas, estampados y promocionales.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Pendones & Lonas</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Stickers Troquelados</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Material Promocional</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 4: Arte Urbano & Murales -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-brand-purple/30 hover:border-brand-purple transition-all group hover:-translate-y-2">
+                    <div class="w-14 h-14 rounded-xl bg-brand-purple/10 border border-brand-purple flex items-center justify-center text-brand-purple text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-brand-purple transition-colors">Arte Urbano & Murales</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Pintura mural con estética urbana, aerografía, rotulación a mano y personalización artística.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Murales Comerciales</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Rotulación Pintada</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-brand-yellow"></i> Intervenciones de Arte</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO / TRABAJOS REALIZADOS (DINÁMICO & GESTIONABLE) -->
+    <section id="portafolio" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="text-xs uppercase font-bold tracking-widest text-brand-magenta mb-2">Galería de Proyectos</h2>
+                    <p class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+                        Nuestros <span class="font-graffiti text-gradient-publiart">Trabajos Realizados</span>
+                    </p>
+                </div>
+
+                <!-- Admin Action Button to Add New Work -->
+                <div>
+                    <button onclick="openAdminModal()" class="px-4 py-2.5 rounded-xl bg-brand-card border border-brand-yellow/50 text-brand-yellow font-bold text-xs hover:bg-brand-yellow hover:text-slate-950 transition-all flex items-center gap-2">
+                        <i class="fas fa-plus-circle"></i> + Agregar Nuevo Trabajo (Panel Admin)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap gap-2 sm:gap-3 mb-10" id="filter-tabs">
+                <button onclick="filterPortfolio('todos')" class="filter-btn active px-5 py-2 rounded-full font-bold text-xs sm:text-sm bg-brand-magenta text-white transition-all" data-category="todos">
+                    Todos los Trabajos
+                </button>
+                <button onclick="filterPortfolio('diseno')" class="filter-btn px-5 py-2 rounded-full font-bold text-xs sm:text-sm bg-brand-card hover:bg-brand-purple/40 text-slate-300 transition-all" data-category="diseno">
+                    Diseño Gráfico
+                </button>
+                <button onclick="filterPortfolio('rotulacion')" class="filter-btn px-5 py-2 rounded-full font-bold text-xs sm:text-sm bg-brand-card hover:bg-brand-purple/40 text-slate-300 transition-all" data-category="rotulacion">
+                    Rotulación & Vinil
+                </button>
+                <button onclick="filterPortfolio('impresion')" class="filter-btn px-5 py-2 rounded-full font-bold text-xs sm:text-sm bg-brand-card hover:bg-brand-purple/40 text-slate-300 transition-all" data-category="impresion">
+                    Impresión & POP
+                </button>
+                <button onclick="filterPortfolio('murales')" class="filter-btn px-5 py-2 rounded-full font-bold text-xs sm:text-sm bg-brand-card hover:bg-brand-purple/40 text-slate-300 transition-all" data-category="murales">
+                    Arte Urbano
+                </button>
+            </div>
+
+            <!-- Projects Grid Container -->
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Works will be dynamically rendered here via JavaScript -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- COTIZADOR EXPRESS / CALCULADOR DE PRESUPUESTO INTERACTIVO -->
+    <section id="cotizador" class="py-20 bg-brand-card/40 relative border-y border-brand-purple/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-card p-8 sm:p-12 rounded-3xl border-2 border-brand-purple/40 glow-blue">
+                
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-brand-yellow font-bold text-xs uppercase tracking-widest">Cotización Inmediata</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-1">
+                        Arma tu presupuesto en <span class="font-graffiti text-brand-blue">3 Clics</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm mt-2">
+                        Selecciona los servicios que necesitas y te generaremos una solicitud directa para WhatsApp.
+                    </p>
+                </div>
+
+                <form id="quote-form" onsubmit="sendWhatsAppQuote(event)" class="space-y-8">
+                    
+                    <!-- Step 1: Select Services -->
+                    <div>
+                        <label class="block font-bold text-sm text-slate-200 mb-4">1. Selecciona el tipo de trabajo:</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="service" value="Diseño de Logotipo" class="peer hidden">
+                                <div class="p-3 rounded-xl bg-brand-dark border border-slate-700 peer-checked:border-brand-magenta peer-checked:bg-brand-magenta/20 text-center transition-all">
+                                    <i class="fas fa-bezier-curve text-brand-magenta text-xl block mb-1"></i>
+                                    <span class="text-xs font-semibold">Diseño de Logo</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="service" value="Rotulación Comercial / Vinil" class="peer hidden">
+                                <div class="p-3 rounded-xl bg-brand-dark border border-slate-700 peer-checked:border-brand-blue peer-checked:bg-brand-blue/20 text-center transition-all">
+                                    <i class="fas fa-cut text-brand-blue text-xl block mb-1"></i>
+                                    <span class="text-xs font-semibold">Rotulación Vinil</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="service" value="Pendón / Lona Publicitaria" class="peer hidden">
+                                <div class="p-3 rounded-xl bg-brand-dark border border-slate-700 peer-checked:border-brand-yellow peer-checked:bg-brand-yellow/20 text-center transition-all">
+                                    <i class="fas fa-scroll text-brand-yellow text-xl block mb-1"></i>
+                                    <span class="text-xs font-semibold">Pendón / Avisos</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="service" value="Stickers / Calcomanías" class="peer hidden">
+                                <div class="p-3 rounded-xl bg-brand-dark border border-slate-700 peer-checked:border-brand-purple peer-checked:bg-brand-purple/20 text-center transition-all">
+                                    <i class="fas fa-sticky-note text-brand-purple text-xl block mb-1"></i>
+                                    <span class="text-xs font-semibold">Stickers / Calcos</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="service" value="Mural / Arte Urbano" class="peer hidden">
+                                <div class="p-3 rounded-xl bg-brand-dark border border-slate-700 peer-checked:border-brand-magenta peer-checked:bg-brand-magenta/20 text-center transition-all">
+                                    <i class="fas fa-spray-can text-brand-magenta text-xl block mb-1"></i>
+                                    <span class="text-xs font-semibold">Mural / Grafiti</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer">
+                                <input type="checkbox" name="service" value="Otro Servicio Personalizado" class="peer hidden">
+                                <div class="p-3 rounded-xl bg-brand-dark border border-slate-700 peer-checked:border-slate-300 peer-checked:bg-slate-700/50 text-center transition-all">
+                                    <i class="fas fa-ellipsis-h text-slate-300 text-xl block mb-1"></i>
+                                    <span class="text-xs font-semibold">Otro Servicio</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Details & Description -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-bold text-xs uppercase text-slate-300 mb-2">Tu Nombre / Negocio</label>
+                            <input type="text" id="quote-name" required placeholder="Ej. Carlos - Barbería Studio" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:border-brand-blue focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-xs uppercase text-slate-300 mb-2">Medidas Aproximadas o Cantidad</label>
+                            <input type="text" id="quote-measures" placeholder="Ej. 2 metros x 1.5 metros o 100 unidades" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:border-brand-blue focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-xs uppercase text-slate-300 mb-2">Detalles Adicionales de tu idea</label>
+                        <textarea id="quote-details" rows="3" placeholder="Cuéntanos brevemente colores, estilo o qué idea tienes en mente..." class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:border-brand-blue focus:outline-none"></textarea>
+                    </div>
+
+                    <!-- Submit WhatsApp Button -->
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 text-white font-black text-lg shadow-xl hover:brightness-110 hover:scale-[1.01] transition-all flex items-center justify-center gap-3">
+                        <i class="fab fa-whatsapp text-2xl"></i> Enviar Cotización por WhatsApp
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO & UBICACIÓN -->
+    <section id="contacto" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div>
+                        <span class="text-brand-magenta font-bold text-xs uppercase tracking-widest">Contacto Directo</span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold mt-1">
+                            ¿Listo para empezar tu <span class="font-graffiti text-brand-yellow">Proyecto?</span>
+                        </h2>
+                        <p class="text-slate-300 mt-4 text-sm sm:text-base">
+                            Estamos para atenderte, responder tus dudas y darle forma a tu publicidad. ¡Escríbenos o visítanos!
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Phone Item with Dripping Icon Style -->
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-brand-card border border-brand-purple/20">
+                            <div class="w-14 h-14 rounded-full bg-brand-magenta flex items-center justify-center text-white text-2xl shrink-0 shadow-lg glow-magenta">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase font-bold text-slate-400">Teléfono / WhatsApp</p>
+                                <a href="https://wa.me/584120000000" target="_blank" class="text-lg font-bold hover:text-brand-magenta transition-colors">
+                                    +58 412-0000000
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Location Item with Dripping Location Pin Style -->
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-brand-card border border-brand-purple/20">
+                            <div class="w-14 h-14 rounded-full bg-brand-blue flex items-center justify-center text-slate-950 text-2xl shrink-0 shadow-lg glow-blue">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase font-bold text-slate-400">Ubicación & Taller</p>
+                                <p class="text-base font-bold text-slate-200">
+                                    Santa Rita / Maracay, Estado Aragua, Venezuela
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Scissors & Brush Art Badge -->
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-brand-card border border-brand-purple/20">
+                            <div class="w-14 h-14 rounded-full bg-brand-yellow flex items-center justify-center text-slate-950 text-2xl shrink-0 shadow-lg glow-yellow">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase font-bold text-slate-400">Horario de Atención</p>
+                                <p class="text-base font-bold text-slate-200">Lunes a Sábado: 8:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Networks -->
+                    <div>
+                        <p class="text-xs uppercase font-bold tracking-wider text-slate-400 mb-3">Síguenos en nuestras redes:</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-12 h-12 rounded-xl bg-brand-card border border-brand-magenta flex items-center justify-center text-brand-magenta hover:bg-brand-magenta hover:text-white transition-all text-xl">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-xl bg-brand-card border border-brand-blue flex items-center justify-center text-brand-blue hover:bg-brand-blue hover:text-slate-950 transition-all text-xl">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-xl bg-brand-card border border-brand-yellow flex items-center justify-center text-brand-yellow hover:bg-brand-yellow hover:text-slate-950 transition-all text-xl">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Google Map Placeholder / Direct Form -->
+                <div class="lg:col-span-6">
+                    <div class="bg-brand-card p-8 rounded-3xl border-2 border-brand-purple/30 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                            <i class="fas fa-paper-plane text-brand-blue"></i> Mensaje Rápido
+                        </h3>
+
+                        <form onsubmit="alert('¡Gracias por tu mensaje! Te responderemos muy pronto.'); return false;" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-400 mb-1">Nombre Completo</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:border-brand-magenta focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-400 mb-1">Correo Electrónico o WhatsApp</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:border-brand-magenta focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-400 mb-1">Tu Mensaje</label>
+                                <textarea rows="4" required class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:border-brand-magenta focus:outline-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-magenta hover:bg-magenta-600 text-white font-bold text-sm transition-all shadow-lg">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark border-t border-brand-purple/20 py-10 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <span class="font-graffiti text-xl text-gradient-publiart">PUBLIART</span>
+                <span class="text-xs border-l border-slate-700 pl-3">© 2026 Todos los derechos reservados</span>
+            </div>
+
+            <p class="text-xs text-slate-400">Diseñado con estilo urbano para destacar tu negocio</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/584120000000?text=Hola%20PubliArt,%20vengo%20desde%20la%20pagina%20web" target="_blank" 
+       class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform glow-magenta" 
+       title="Chatea con nosotros">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- MODAL LIGHTBOX / VER PROYECTO DETALLE -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-brand-card max-w-2xl w-full rounded-3xl border-2 border-brand-magenta p-6 relative overflow-hidden">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-content" class="space-y-4">
+                <!-- Content inserted via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ADMIN / AGREGAR NUEVO TRABAJO -->
+    <div id="admin-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-brand-card max-w-lg w-full rounded-3xl border-2 border-brand-yellow p-6 relative">
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h3 class="text-xl font-bold mb-4 text-brand-yellow flex items-center gap-2">
+                <i class="fas fa-folder-plus"></i> Subir Nuevo Trabajo al Portafolio
+            </h3>
+            
+            <form onsubmit="addNewWork(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">Título del Trabajo</label>
+                    <input type="text" id="new-title" required placeholder="Ej. Rotulación de Camioneta Barber" class="w-full px-3 py-2 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">Categoría</label>
+                    <select id="new-category" class="w-full px-3 py-2 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:outline-none">
+                        <option value="diseno">Diseño Gráfico</option>
+                        <option value="rotulacion">Rotulación & Vinil</option>
+                        <option value="impresion">Impresión & POP</option>
+                        <option value="murales">Arte Urbano / Murales</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">URL de la Imagen / Foto</label>
+                    <input type="url" id="new-image" required placeholder="https://ejemplo.com/mifoto.jpg" class="w-full px-3 py-2 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:outline-none">
+                    <p class="text-[10px] text-slate-400 mt-1">Puedes usar enlaces directos de imágenes subidas a internet o redes sociales.</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">Descripción Corta</label>
+                    <textarea id="new-desc" rows="2" placeholder="Detalles de materiales, diseño o técnica utilizada..." class="w-full px-3 py-2 rounded-xl bg-brand-dark border border-slate-700 text-white text-sm focus:outline-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-xl bg-brand-yellow text-slate-950 font-extrabold text-sm hover:brightness-110 transition-all">
+                    Guardar y Publicar Trabajo
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR DYNAMIC PORTFOLIO & INTERACTIVITY -->
+    <script>
+        // Initial Portfolio Items Sample Data
+        const initialWorks = [
+            {
+                id: 101,
+                title: 'Rotulación de Vitrina "La Franela Perfecta"',
+                category: 'rotulacion',
+                categoryLabel: 'Rotulación & Vinil',
+                image: 'montaje_Mesa de trabajo 1.jpg',
+                description: 'Impresión de alta resolución e instalación de vinil decorativo en fachada y puertas de cristal. Adaptación perfecta a las medidas del local comercial.'
+            },
+            {
+                id: 102,
+                title: 'Línea Gráfica Publicitaria "La Franela Perfecta"',
+                category: 'diseno',
+                categoryLabel: 'Diseño Gráfico',
+                image: 'vitrina de sublimacion [Recuperado]_Mesa de trabajo 1.jpg',
+                description: 'Desarrollo de composición visual vibrante, diagramación y arte digital optimizado para publicidad exterior y formatos de gran tamaño.'
+            },
+            {
+                id: 1,
+                title: 'Logotipo & Branding Barber Studio',
+                category: 'diseno',
+                categoryLabel: 'Diseño Gráfico',
+                image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
+                description: 'Diseño de identidad visual urbana con vectorización completa, paleta de colores y artes para redes.'
+            },
+            {
+                id: 2,
+                title: 'Rotulación Comercial en Vinil Negro Matte',
+                category: 'rotulacion',
+                categoryLabel: 'Rotulación & Vinil',
+                image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+                description: 'Instalación de vinil de alta resistencia para fachada de local comercial y vitrina.'
+            },
+            {
+                id: 3,
+                title: 'Impresión Gran Formato & Pendones POP',
+                category: 'impresion',
+                categoryLabel: 'Impresión & POP',
+                image: 'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=800&q=80',
+                description: 'Impresión de alta resolución en lona banner con ojetes de aluminio para evento publicitario.'
+            },
+            {
+                id: 4,
+                title: 'Mural Artístico & Graffiti Comercial',
+                category: 'murales',
+                categoryLabel: 'Arte Urbano',
+                image: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80',
+                description: 'Intervención de pared de 4x3 metros en aerosol y pintura acrílica para concepto gastronómico.'
+            },
+            {
+                id: 5,
+                title: 'Pack de Stickers Troquelados en Vinil',
+                category: 'impresion',
+                categoryLabel: 'Impresión & POP',
+                image: 'https://images.unsplash.com/photo-1572375992501-4b0892d50c69?auto=format&fit=crop&w=800&q=80',
+                description: 'Calcomanías resistentes al agua y sol con corte contorneado digital.'
+            },
+            {
+                id: 6,
+                title: 'Rotulación Vehicular en Vinil Microperforado',
+                category: 'rotulacion',
+                categoryLabel: 'Rotulación & Vinil',
+                image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
+                description: 'Diseño y pegado de publicidad móvil para flota de transporte corporativo.'
+            }
+        ];
+
+        // Load works from LocalStorage or default
+        function getWorks() {
+            const saved = localStorage.getItem('publiart_works_v2');
+            if (saved) {
+                return JSON.parse(saved);
+            } else {
+                localStorage.setItem('publiart_works_v2', JSON.stringify(initialWorks));
+                return initialWorks;
+            }
+        }
+
+        let currentCategory = 'todos';
+
+        // Render Portfolio Grid
+        function renderPortfolio() {
+            const works = getWorks();
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = '';
+
+            const filtered = currentCategory === 'todos' 
+                ? works 
+                : works.filter(w => w.category === currentCategory);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-slate-400">
+                        <i class="fas fa-folder-open text-4xl mb-3 text-brand-purple"></i>
+                        <p class="font-bold">No hay trabajos subidos en esta categoría aún.</p>
+                        <p class="text-xs mt-1">¡Pronto añadiremos más proyectos!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-brand-card rounded-2xl overflow-hidden border border-brand-purple/20 hover:border-brand-magenta transition-all group duration-300';
+                card.innerHTML = `
+                    <div class="relative h-56 overflow-hidden bg-brand-dark">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80'">
+                        <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-brand-dark/80 backdrop-blur-md text-brand-yellow font-bold text-[10px] uppercase border border-brand-yellow/30">
+                            ${item.categoryLabel || item.category}
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-white group-hover:text-brand-magenta transition-colors line-clamp-1">${item.title}</h3>
+                        <p class="text-slate-400 text-xs mt-2 line-clamp-2">${item.description}</p>
+                        <button onclick="openModal(${item.id})" class="mt-4 w-full py-2 rounded-xl bg-brand-dark border border-slate-700 text-slate-200 hover:text-white hover:border-brand-blue font-bold text-xs transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-search-plus"></i> Ver Detalle
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Portfolio Tab Handler
+        function filterPortfolio(category) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.className = 'filter-btn active px-5 py-2 rounded-full font-bold text-xs sm:text-sm bg-brand-magenta text-white transition-all shadow-lg';
+                } else {
+                    btn.className = 'filter-btn px-5 py-2 rounded-full font-bold text-xs sm:text-sm bg-brand-card hover:bg-brand-purple/40 text-slate-300 transition-all';
+                }
+            });
+            renderPortfolio();
+        }
+
+        // Lightbox Modal
+        function openModal(id) {
+            const works = getWorks();
+            const item = works.find(w => w.id === id);
+            if (!item) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <img src="${item.image}" alt="${item.title}" class="w-full h-64 sm:h-80 object-cover rounded-2xl border border-slate-700">
+                <span class="inline-block px-3 py-1 rounded-full bg-brand-magenta/20 text-brand-magenta font-bold text-xs uppercase border border-brand-magenta/30 mt-2">
+                    ${item.categoryLabel || item.category}
+                </span>
+                <h3 class="text-2xl font-bold text-white">${item.title}</h3>
+                <p class="text-slate-300 text-sm leading-relaxed">${item.description}</p>
+                <div class="pt-4 border-t border-slate-800 flex justify-end">
+                    <a href="https://wa.me/584120000000?text=Hola%20PubliArt,%20me%20gustó%20su%20trabajo:%20${encodeURIComponent(item.title)}" target="_blank" class="px-6 py-2.5 rounded-xl bg-green-500 text-white font-bold text-xs flex items-center gap-2 hover:brightness-110">
+                        <i class="fab fa-whatsapp"></i> Consultar Trabajo Similar
+                    </a>
+                </div>
+            `;
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Admin Modal Functions
+        function openAdminModal() {
+            const modal = document.getElementById('admin-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeAdminModal() {
+            const modal = document.getElementById('admin-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Add new work function (saves to localStorage)
+        function addNewWork(e) {
+            e.preventDefault();
+            const title = document.getElementById('new-title').value;
+            const category = document.getElementById('new-category').value;
+            const image = document.getElementById('new-image').value;
+            const desc = document.getElementById('new-desc').value;
+
+            const categoryLabels = {
+                'diseno': 'Diseño Gráfico',
+                'rotulacion': 'Rotulación & Vinil',
+                'impresion': 'Impresión & POP',
+                'murales': 'Arte Urbano'
+            };
+
+            const newWork = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                categoryLabel: categoryLabels[category] || category,
+                image: image,
+                description: desc || 'Proyecto realizado con estándares de alta calidad por PubliArt.'
+            };
+
+            const works = getWorks();
+            works.unshift(newWork);
+            localStorage.setItem('publiart_works_v2', JSON.stringify(works));
+
+            // Reset form & reload
+            e.target.reset();
+            closeAdminModal();
+            renderPortfolio();
+            alert('¡Trabajo agregado con éxito al portafolio!');
+        }
+
+        // WhatsApp Quote Calculator Handler
+        function sendWhatsAppQuote(e) {
+            e.preventDefault();
+            const name = document.getElementById('quote-name').value;
+            const measures = document.getElementById('quote-measures').value;
+            const details = document.getElementById('quote-details').value;
+
+            const checkedServices = Array.from(document.querySelectorAll('input[name="service"]:checked'))
+                                         .map(cb => cb.value);
+
+            if (checkedServices.length === 0) {
+                alert('Por favor selecciona al menos un servicio.');
+                return;
+            }
+
+            let msg = `🎨 *NUEVA COTIZACIÓN PUBLIART*\n\n`;
+            msg += `👤 *Cliente/Negocio:* ${name}\n`;
+            msg += `🛠️ *Servicios:* ${checkedServices.join(', ')}\n`;
+            if (measures) msg += `📐 *Medidas/Cantidad:* ${measures}\n`;
+            if (details) msg += `💡 *Detalles:* ${details}\n\n`;
+            msg += `¡Hola! Quisiera recibir presupuesto para este proyecto.`;
+
+            const phone = "584120000000"; // Replace with real phone number
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPortfolio();
+        });
+    </script>
+</body>
+</html>
